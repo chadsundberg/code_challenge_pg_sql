@@ -8,16 +8,12 @@ $(document).ready(function () {
   $('#saveNewButton').on('click', function(event) {
     event.preventDefault();
 
-    var treateName = $('#treatNameInput').val();
-    var treatDescription = $('#treatDescriptionInput').val();
-    var treateURL = $('#treatUrlInput').val();
-
     var newTreat = {
-      name: treateName,
-      description: treatDescription,
-      url: treateURL
+      name: $('#treatNameInput').val(),
+      description: $('#treatDescriptionInput').val(),
+      url: $('#treatUrlInput').val()
     };
-
+    console.log(newTreat);
     postTreat(newTreat);
   });
 
@@ -46,7 +42,7 @@ $(document).ready(function () {
       data: treat,
     })
     .done(function () {
-      console.log('POST /treats sent ', treat);
+      console.log('POST /treats sent ', newTreat);
       clearDom();
       getTreats();
     });
